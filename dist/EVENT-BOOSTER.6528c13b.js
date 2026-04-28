@@ -714,13 +714,67 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 }
 
 },{}],"6kb64":[function(require,module,exports,__globalThis) {
+var _api = require("./api");
+
+},{"./api":"4yEOZ"}],"4yEOZ":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "fetchEvents", ()=>fetchEvents);
 const BASE_URL = "https://app.ticketmaster.com/discovery/v2/events.json";
 const API_KEY = "tG7aQ3GCK35UI1b0FVQGBmQ2kSZJ2t4e";
-let keyword = 'devjam';
-let countryCode = 'UA';
+let country = "US";
+let keyword = "events";
 let page = 1;
-const url = `${BASE_URL}?apikey=${API_KEY}&keyword=${keyword}&countryCode=${countryCode}&page=${page}`;
-fetch(url).then((res)=>res.json()).then((data)=>console.log(data)).catch((err)=>console.log(err));
+async function fetchEvents({ country, keyword, page }) {
+    const URL = `${BASE_URL}?apikey=${API_KEY}&keyword=${keyword}&countryCode=${country}&page=${page}`;
+    const res = await fetch(URL);
+    const data = await res.json();
+    return data;
+}
+async function init() {
+    const data = await fetchEvents({
+        country,
+        keyword,
+        page
+    });
+    if (!data._embedded) {
+        console.log("\u041D\u0435\u043C\u0430\u0454 \u043F\u043E\u0434\u0456\u0457");
+        return;
+    }
+    const events = data._embedded.events;
+    console.log(events);
+}
+init();
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"jnFvT":[function(require,module,exports,__globalThis) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, '__esModule', {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === 'default' || key === '__esModule' || Object.prototype.hasOwnProperty.call(dest, key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
 
 },{}]},["6DHTQ","6kb64"], "6kb64", "parcelRequirec002", {})
 
