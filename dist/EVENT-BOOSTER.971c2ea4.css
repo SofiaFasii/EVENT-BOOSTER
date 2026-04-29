@@ -32,4 +32,87 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
+* {
+  box-sizing: border-box;
+  outline: none;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Montserrat Alternates, sans-serif;
+  font-weight: 400;
+}
+
+.container {
+  background: #0000001f;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.header__container {
+  position: relative;
+}
+
+.header__logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.header__content {
+  flex-direction: column;
+  align-items: center;
+  height: 446px;
+  display: flex;
+}
+
+.header__title {
+  text-align: center;
+  color: #dc56c5;
+  padding: 40px 0 52px;
+  font-size: 50px;
+  font-weight: 900;
+}
+
+.header__search {
+  flex-direction: row;
+  align-items: center;
+  gap: 30px;
+  display: flex;
+}
+
+.header__search-keyword {
+  align-items: center;
+  display: flex;
+}
+
+.header__search input {
+  border: none;
+  border-radius: 20px;
+  width: 270px;
+  height: 40px;
+  padding: 10px 30px;
+  font-size: 16px;
+}
+
+.header .header__input {
+  border-radius: 20px 0 0 20px;
+  width: 230px;
+}
+
+.header__btn {
+  background-color: #fff;
+  background-repeat: no-repeat;
+  border: none;
+  border-radius: 0 20px 20px 0;
+  width: 40px;
+  height: 40px;
+  font-size: 30px;
+}
+
+.event-img {
+  width: 200px;
+}
 /*# sourceMappingURL=EVENT-BOOSTER.971c2ea4.css.map */

@@ -715,24 +715,12 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 
 },{}],"6kb64":[function(require,module,exports,__globalThis) {
 var _api = require("./api");
-
-},{"./api":"4yEOZ"}],"4yEOZ":[function(require,module,exports,__globalThis) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "fetchEvents", ()=>fetchEvents);
-const BASE_URL = "https://app.ticketmaster.com/discovery/v2/events.json";
-const API_KEY = "tG7aQ3GCK35UI1b0FVQGBmQ2kSZJ2t4e";
+var _render = require("./render");
 let country = "US";
 let keyword = "events";
 let page = 1;
-async function fetchEvents({ country, keyword, page }) {
-    const URL = `${BASE_URL}?apikey=${API_KEY}&keyword=${keyword}&countryCode=${country}&page=${page}`;
-    const res = await fetch(URL);
-    const data = await res.json();
-    return data;
-}
 async function init() {
-    const data = await fetchEvents({
+    const data = await (0, _api.fetchEvents)({
         country,
         keyword,
         page
@@ -743,8 +731,22 @@ async function init() {
     }
     const events = data._embedded.events;
     console.log(events);
+    (0, _render.renderEvents)(events);
 }
 init();
+
+},{"./api":"4yEOZ","./render":"dvMGd"}],"4yEOZ":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "fetchEvents", ()=>fetchEvents);
+const BASE_URL = "https://app.ticketmaster.com/discovery/v2/events.json";
+const API_KEY = "tG7aQ3GCK35UI1b0FVQGBmQ2kSZJ2t4e";
+async function fetchEvents({ country, keyword, page }) {
+    const URL = `${BASE_URL}?apikey=${API_KEY}&keyword=${keyword}&countryCode=${country}&page=${page}`;
+    const res = await fetch(URL);
+    const data = await res.json();
+    return data;
+}
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"jnFvT":[function(require,module,exports,__globalThis) {
 exports.interopDefault = function(a) {
@@ -776,6 +778,24 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}]},["6DHTQ","6kb64"], "6kb64", "parcelRequirec002", {})
+},{}],"dvMGd":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "renderEvents", ()=>renderEvents);
+const list = document.querySelector(".events-list");
+function renderEvents(events) {
+    const markup = events.map((event)=>{
+        return `
+            <li class="event" data-id="${event.id}">
+                <img src="${event.images[0].url} class="event-img" alt="">
+                <h3>${event.name}</h3>
+                <p>${event.dates.start.localDate}</p>
+            </li>
+        `;
+    });
+    list.innerHTML = markup;
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["6DHTQ","6kb64"], "6kb64", "parcelRequirec002", {})
 
 //# sourceMappingURL=EVENT-BOOSTER.6528c13b.js.map
