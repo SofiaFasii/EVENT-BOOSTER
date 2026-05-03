@@ -58,6 +58,7 @@ body {
     height: 201px;
     border-radius: 0px 0px 100% 0px;
     backdrop-filter: blur(22px);
+    box-shadow: inset 7px 7px 16px rgba(255, 255, 255, 0.3);
 }
 .header__logo img{
     margin: 40px 0 0 40px;
@@ -81,32 +82,51 @@ body {
     align-items: center;
     gap: 30px;
 }
-.header__keyword{
-    display: flex;
-    align-items: center;
-}
 .header__search input{
-    padding: 10px 30px;
+    padding: 10px 50px 10px 30px;
     width: 270px;
     height: 40px;
     border-radius: 20px;
     font-size: 16px;
     border: none;
 }
-.header .header__input{
-    width: 230px;
-    border-radius: 20px 0 0 20px;
+.header__keyword,
+.header__country {
+  position: relative;
 }
-.header__btn{
-    /* // background-image: url(../img/search.svg); */
-    width: 40px;
-    height: 40px;
-    background-repeat: no-repeat;
-    font-size: 30px;
-    border-radius: 0 20px 20px 0;
-    border: none;
-    background-color: var(--color-white);
+.header__input {
+  width: 270px;
+  height: 40px;
+  border-radius: 20px;
+  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
 }
+.header__input::placeholder {
+  color: #939393;
+}
+.header__btn {
+  position: absolute;
+  right: 30px;
+  top: 13px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.header__country{
+    display: flex;
+}
+
+
+
+/* -- main -- */
 .event-img{
     width: 200px;
 }
+
+
+
+/* -- footer -- */

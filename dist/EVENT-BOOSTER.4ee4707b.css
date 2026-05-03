@@ -94,6 +94,7 @@ body {
   position: absolute;
   top: 0;
   left: 0;
+  box-shadow: inset 7px 7px 16px #ffffff4d;
 }
 
 .header__logo img {
@@ -122,33 +123,46 @@ body {
   display: flex;
 }
 
-.header__keyword {
-  align-items: center;
-  display: flex;
-}
-
 .header__search input {
   border: none;
   border-radius: 20px;
   width: 270px;
   height: 40px;
-  padding: 10px 30px;
+  padding: 10px 50px 10px 30px;
   font-size: 16px;
 }
 
-.header .header__input {
-  border-radius: 20px 0 0 20px;
-  width: 230px;
+.header__keyword, .header__country {
+  position: relative;
+}
+
+.header__input {
+  backdrop-filter: blur(20px);
+  color: #fff;
+  background: #ffffff26;
+  border: none;
+  border-radius: 20px;
+  width: 270px;
+  height: 40px;
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+}
+
+.header__input::placeholder {
+  color: #939393;
 }
 
 .header__btn {
-  background-repeat: no-repeat;
-  background-color: var(--color-white);
+  cursor: pointer;
+  background: none;
   border: none;
-  border-radius: 0 20px 20px 0;
-  width: 40px;
-  height: 40px;
-  font-size: 30px;
+  position: absolute;
+  top: 13px;
+  right: 30px;
+}
+
+.header__country {
+  display: flex;
 }
 
 .event-img {
